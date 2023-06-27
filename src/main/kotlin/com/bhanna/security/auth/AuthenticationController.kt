@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/v1/auth")
 class AuthenticationController(
-    val authService: AuthService
+    val authenticationService: AuthenticationService
 ) {
 
     @PostMapping("/register")
     fun register(
         @RequestBody request: RegisterRequest
     ): ResponseEntity<AuthenticationResponse> {
-        return ResponseEntity.ok().body(authService.register(request))
+        return ResponseEntity.ok().body(authenticationService.register(request))
     }
 
     @PostMapping("/authenticate")
     fun authenticate(
         @RequestBody request: AuthenticationRequest
     ): ResponseEntity<AuthenticationResponse> {
-        return ResponseEntity.ok().body(authService.authenticate(request))
+        return ResponseEntity.ok().body(authenticationService.authenticate(request))
     }
 }

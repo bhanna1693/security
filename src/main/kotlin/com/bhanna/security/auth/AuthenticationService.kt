@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
-class AuthService(
+class AuthenticationService(
     val userRepository: UserRepository,
     val passwordEncoder: PasswordEncoder,
     val jwtService: JwtService,
