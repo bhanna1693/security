@@ -12,7 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    database: postgresql
+    database: h2
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 application:

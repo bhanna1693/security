@@ -11,7 +11,7 @@ class SecurityApplicationTests {
     @Test
     fun contextLoads() {
         val v = true
-        assert(v == true, { "Test" })
+        assert(v == true) { "Test" }
     }
 
 }
