@@ -14,11 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.test.context.ActiveProfiles
 import java.util.*
 
 @SpringBootTest
-@ActiveProfiles("test")
 class AuthenticationServiceTest {
 
     private final val userRepository: UserRepository = mockk()
