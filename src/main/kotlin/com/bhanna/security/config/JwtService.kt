@@ -38,7 +38,7 @@ class JwtService {
     }
 
     fun generateToken(
-        extraClaims: Map<String?, Any?>,
+        extraClaims: Map<String, Any>,
         userDetails: UserDetails
     ): String {
         return buildToken(extraClaims, userDetails, jwtExpiration)
@@ -51,7 +51,7 @@ class JwtService {
     }
 
     private fun buildToken(
-        extraClaims: Map<String?, Any?>,
+        extraClaims: Map<String, Any>,
         userDetails: UserDetails,
         expiration: Long
     ): String {
@@ -88,7 +88,7 @@ class JwtService {
             .getBody()
     }
 
-    private fun getSignInKey(): Key? {
+    private fun getSignInKey(): Key {
         val keyBytes = Decoders.BASE64.decode(secretKey)
         return Keys.hmacShaKeyFor(keyBytes)
     }
