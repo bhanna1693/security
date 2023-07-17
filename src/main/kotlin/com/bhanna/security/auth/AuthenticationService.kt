@@ -18,8 +18,6 @@ class AuthenticationService(
 ) {
 
     fun register(request: RegisterRequest): AuthenticationResponse {
-        if (userRepository.findByEmail(request.email).isPresent) throw RuntimeException("User with email already exists. Please log in")
-
         val user = User(
             firstName = request.firstName,
             lastName = request.lastName,

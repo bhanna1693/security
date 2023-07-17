@@ -6,7 +6,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
-@Table(name = "_user")
+@Table(
+    name = "_user",
+    uniqueConstraints = [
+        UniqueConstraint(name = "unique_user_email", columnNames = arrayOf("email"))
+    ]
+)
 class User(
     private val firstName: String,
     private val lastName: String,
