@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "3.1.1"
     id("io.spring.dependency-management") version "1.1.0"
+    id("org.flywaydb.flyway") version "9.8.1"
     kotlin("jvm") version "1.8.22"
     kotlin("plugin.spring") version "1.8.22"
     kotlin("plugin.jpa") version "1.8.22"
@@ -20,6 +21,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.flywaydb:flyway-core")
+
     // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
     implementation("io.jsonwebtoken", "jjwt-api", "0.11.5")
     implementation("io.jsonwebtoken", "jjwt-impl", "0.11.5")

@@ -15,6 +15,13 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+#  flyway:
+#    baseline-on-migrate: true
+#    url: jdbc:postgresql://localhost:5432/users
+#    user: postgres
+#    password: postgres
+#    driver-class-name: org.postgresql.Driver
+
 application:
   security:
     jwt:
