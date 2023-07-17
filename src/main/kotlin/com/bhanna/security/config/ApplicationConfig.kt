@@ -7,12 +7,10 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
-import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.stereotype.Component
 
 @Configuration
 class ApplicationConfig(
@@ -21,7 +19,10 @@ class ApplicationConfig(
 
     @Bean
     fun userDetailsService(): UserDetailsService {
-        return MyUserDetailsService(userRepository)
+        return UserDetailsService { username ->
+            userRepository.findByEmail(username)
+                .orElseThrow { UsernameNotFoundException("User not found") }
+        }
     }
 
     @Bean
@@ -40,18 +41,6 @@ class ApplicationConfig(
     @Bean
     fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
-    }
-
-}
-
-
-@Component
-class MyUserDetailsService(
-    val userRepository: UserRepository
-) : UserDetailsService {
-    override fun loadUserByUsername(username: String): UserDetails {
-        return userRepository.findByEmail(username)
-            .orElseThrow { UsernameNotFoundException("User not found") }
     }
 
 }
